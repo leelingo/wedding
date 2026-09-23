@@ -142,54 +142,13 @@
     function parentLine(father, mother, fatherDeceased, motherDeceased) {
       const fd = fatherDeceased ? ' deceased' : '';
       const md = motherDeceased ? ' deceased' : '';
-      return `<span class="${fd}">${father}</span> · <span class="${md}">${mother}</span>`;
+      return `<span class="parent-name${fd}">${father}</span> · <span class="parent-name${md}">${mother}</span>`;
     }
 
     $('#greetingParents').innerHTML = `
-      <div class="parent-row">${parentLine(g.father, g.mother, g.fatherDeceased, g.motherDeceased)}의 아들 <span class="child-name">${g.name}</span></div>
-      <div class="parent-row">${parentLine(b.father, b.mother, b.fatherDeceased, b.motherDeceased)}의 딸 <span class="child-name">${b.name}</span></div>
+      <div class="parent-row">${parentLine(g.father, g.mother, g.fatherDeceased, g.motherDeceased)}<span class="relation">의 차남</span> <span class="child-name">${g.name}</span></div>
+      <div class="parent-row">${parentLine(b.father, b.mother, b.fatherDeceased, b.motherDeceased)}<span class="relation">의 차녀</span> <span class="child-name">${b.name}</span></div>
     `;
-
-    const contactList = $('#contactList');
-    contactList.innerHTML = `
-      <div class="contact-item">
-        <span class="contact-item__name">신랑 ${g.name}</span>
-        <div class="contact-item__actions">
-          <a class="contact-item__btn" href="tel:${g.tel}">전화</a>
-          <a class="contact-item__btn" href="sms:${g.tel}">문자</a>
-        </div>
-      </div>
-      <div class="contact-item">
-        <span class="contact-item__name">신부 ${b.name}</span>
-        <div class="contact-item__actions">
-          <a class="contact-item__btn" href="tel:${b.tel}">전화</a>
-          <a class="contact-item__btn" href="sms:${b.tel}">문자</a>
-        </div>
-      </div>
-    `;
-
-    $('#contactBtn').addEventListener('click', () => openSheet('contactModal'));
-  }
-
-  /* ═══════════════════════════════════════════
-     Sheet Modals (연락하기 / 인터뷰)
-     ═══════════════════════════════════════════ */
-
-  function openSheet(id) {
-    $(`#${id}`).classList.add('is-open');
-    document.body.classList.add('no-scroll');
-  }
-
-  function closeSheet(id) {
-    $(`#${id}`).classList.remove('is-open');
-    document.body.classList.remove('no-scroll');
-  }
-
-  function initSheetModals() {
-    $('#contactClose').addEventListener('click', () => closeSheet('contactModal'));
-    $('#contactBackdrop').addEventListener('click', () => closeSheet('contactModal'));
-    $('#interviewClose').addEventListener('click', () => closeSheet('interviewModal'));
-    $('#interviewBackdrop').addEventListener('click', () => closeSheet('interviewModal'));
   }
 
   /* ═══════════════════════════════════════════
@@ -202,16 +161,6 @@
     $('#interviewSubtitle').textContent = iv.subtitle;
     $('#interviewGroomPhoto').src = 'images/profile/1.jpg';
     $('#interviewBridePhoto').src = 'images/profile/2.jpg';
-
-    $('#interviewList').innerHTML = iv.questions.map(item => `
-      <div class="interview-item">
-        <p class="interview-item__q">Q. ${item.q}</p>
-        <div class="interview-item__a">
-          <p><b>신랑</b> ${item.answerGroom}</p>
-          <p><b>신부</b> ${item.answerBride}</p>
-        </div>
-      </div>
-    `).join('');
   }
 
   /* ═══════════════════════════════════════════
@@ -283,12 +232,12 @@
     const diff = wedding - now;
 
     if (diff <= 0) {
-      descEl.textContent = `${CONFIG.bride.name}, ${CONFIG.groom.name}의 결혼식 날입니다.`;
+      descEl.textContent = `정은, 상우의 결혼식 날입니다.`;
       return;
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    descEl.textContent = `${CONFIG.bride.name}, ${CONFIG.groom.name}의 결혼식이 ${days + 1}일 남았습니다.`;
+    descEl.textContent = `정은, 상우의 결혼식이 ${days + 1}일 남았습니다.`;
   }
 
   /* ═══════════════════════════════════════════
@@ -323,36 +272,15 @@
   function initLocation() {
     const w = CONFIG.wedding;
     $('#locationVenue').textContent = w.venue;
-    $('#locationHall').textContent = w.hall;
     $('#locationAddress').textContent = w.address;
-    $('#locationTel').textContent = w.tel ? `Tel. ${w.tel}` : '';
     $('#locationMapImg').src = 'images/location/1.jpg';
-    $('#kakaoMapBtn').href = w.mapLinks.kakao || '#';
     $('#naverMapBtn').href = w.mapLinks.naver || '#';
-    $('#tmapBtn').href = w.mapLinks.tmap || '#';
 
     $('#copyAddressBtn').addEventListener('click', () => {
       copyToClipboard(w.address, '주소가 복사되었습니다');
     });
 
     initLocationTransit();
-  }
-
-  /* ═══════════════════════════════════════════
-     Info Cards
-     ═══════════════════════════════════════════ */
-
-  function initInfoCards() {
-    const info = CONFIG.info;
-    $('#infoTitle').textContent = info.title;
-
-    $('#infoCards').innerHTML = info.cards.map(card => `
-      <div class="info__card">
-        <div class="info__card-img"><img src="${card.image}" alt="${card.title}" loading="lazy"></div>
-        <p class="info__card-title">${card.title}</p>
-        <p class="info__card-text">${card.content}</p>
-      </div>
-    `).join('');
   }
 
   /* ═══════════════════════════════════════════
@@ -632,10 +560,8 @@
     initCalendar();
     initCountdown();
     initLocation();
-    initInfoCards();
     initAccounts();
     initFooter();
-    initSheetModals();
     initPhotoModal();
     initScrollAnimations();
 

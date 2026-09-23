@@ -38,26 +38,6 @@
     <div class="photo-modal__counter" id="modalCounter"></div>
   </div>
 
-  <!-- ─── Contact Modal (연락하기) ─── -->
-  <div id="contactModal" class="sheet-modal" role="dialog" aria-modal="true" aria-label="연락하기">
-    <div class="sheet-modal__backdrop" id="contactBackdrop"></div>
-    <div class="sheet-modal__panel">
-      <button class="sheet-modal__close" id="contactClose" aria-label="닫기">&times;</button>
-      <h3 class="sheet-modal__title">연락하기</h3>
-      <div class="contact-list" id="contactList"></div>
-    </div>
-  </div>
-
-  <!-- ─── Interview Modal ─── -->
-  <div id="interviewModal" class="sheet-modal" role="dialog" aria-modal="true" aria-label="인터뷰">
-    <div class="sheet-modal__backdrop" id="interviewBackdrop"></div>
-    <div class="sheet-modal__panel sheet-modal__panel--tall">
-      <button class="sheet-modal__close" id="interviewClose" aria-label="닫기">&times;</button>
-      <h3 class="sheet-modal__title">신랑 &amp; 신부의 인터뷰</h3>
-      <div class="interview-list" id="interviewList"></div>
-    </div>
-  </div>
-
   <!-- ─── Main Content ─── -->
   <main id="mainContent" class="main-content">
 
@@ -80,16 +60,12 @@
         <p class="greeting__text animate-item" data-animate="fade-up" id="greetingContent"></p>
         <div class="section__divider animate-item" data-animate="fade-in"></div>
         <div class="greeting__parents animate-item" data-animate="fade-up" id="greetingParents"></div>
-        <button class="btn btn--pill animate-item" data-animate="fade-up" id="contactBtn">
-          <span class="btn__icon">&#9742;</span> 연락하기
-        </button>
       </div>
     </section>
 
     <!-- Interview Section -->
     <section class="section interview" id="interview">
       <div class="section__inner">
-        <p class="section__eyebrow animate-item" data-animate="fade-up">INTERVIEW</p>
         <h2 class="section__title animate-item" data-animate="fade-up" id="interviewTitle"></h2>
         <p class="section__subtitle animate-item" data-animate="fade-up" id="interviewSubtitle"></p>
         <div class="interview__photos animate-item" data-animate="fade-up">
@@ -116,9 +92,7 @@
         <h2 class="section__title animate-item" data-animate="fade-up">오시는 길</h2>
         <div class="location__info animate-item" data-animate="fade-up">
           <p class="location__venue" id="locationVenue"></p>
-          <p class="location__hall" id="locationHall"></p>
           <p class="location__address" id="locationAddress"></p>
-          <p class="location__tel" id="locationTel"></p>
         </div>
         <button class="btn btn--text location__copy animate-item" data-animate="fade-up" id="copyAddressBtn">주소 복사</button>
         <div class="location__map animate-item" data-animate="fade-in">
@@ -126,8 +100,6 @@
         </div>
         <div class="location__links animate-item" data-animate="fade-up">
           <a class="btn btn--outline" id="naverMapBtn" href="#" target="_blank" rel="noopener">네이버지도</a>
-          <a class="btn btn--outline" id="tmapBtn" href="#" target="_blank" rel="noopener">티맵</a>
-          <a class="btn btn--outline" id="kakaoMapBtn" href="#" target="_blank" rel="noopener">카카오맵</a>
         </div>
 
         <div class="location__transit" id="locationTransit">
@@ -145,15 +117,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Info Cards Section -->
-    <section class="section info" id="info">
-      <div class="section__inner">
-        <p class="section__eyebrow animate-item" data-animate="fade-up">INFORMATION</p>
-        <h2 class="section__title animate-item" data-animate="fade-up" id="infoTitle"></h2>
-      </div>
-      <div class="info__cards" id="infoCards"></div>
     </section>
 
     <!-- Gallery Section -->
