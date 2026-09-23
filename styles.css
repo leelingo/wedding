@@ -574,43 +574,24 @@ a { color: inherit; text-decoration: none; }
 
 .calendar__day.is-today {
   font-weight: 700;
+}
+
+.calendar__day.is-today .calendar__day-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
   color: var(--color-white);
   background: var(--color-accent);
   border-radius: 50%;
 }
 
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-bottom: var(--spacing-md);
-}
-
-.countdown__box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  min-width: 52px;
-}
-
-.countdown__num {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--color-text);
-}
-
-.countdown__unit {
-  font-size: 0.625rem;
-  letter-spacing: 1px;
-  color: var(--color-text-light);
-}
-
 .countdown__desc {
   font-size: 0.8125rem;
   color: var(--color-text-light);
-  margin: 0;
+  margin: var(--spacing-md) 0 0;
 }
 
 /* ═══════════════════════════════════════════

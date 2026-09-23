@@ -274,39 +274,21 @@
     grid.appendChild(daysContainer);
   }
 
-  let countdownTimer = null;
   function initCountdown() {
     const descEl = $('#countdownDesc');
+    if (!descEl) return;
 
-    function tick() {
-      const wedding = getWeddingDateTime();
-      const now = new Date();
-      const diff = wedding - now;
+    const wedding = getWeddingDateTime();
+    const now = new Date();
+    const diff = wedding - now;
 
-      if (diff <= 0) {
-        $('#cdDays').textContent = '0';
-        $('#cdHours').textContent = '00';
-        $('#cdMinutes').textContent = '00';
-        $('#cdSeconds').textContent = '00';
-        if (descEl) descEl.textContent = `${CONFIG.bride.name}, ${CONFIG.groom.name}의 결혼식 날입니다.`;
-        clearInterval(countdownTimer);
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      $('#cdDays').textContent = days;
-      $('#cdHours').textContent = String(hours).padStart(2, '0');
-      $('#cdMinutes').textContent = String(minutes).padStart(2, '0');
-      $('#cdSeconds').textContent = String(seconds).padStart(2, '0');
-      if (descEl) descEl.textContent = `${CONFIG.bride.name}, ${CONFIG.groom.name}의 결혼식이 ${days + 1}일 남았습니다.`;
+    if (diff <= 0) {
+      descEl.textContent = `${CONFIG.bride.name}, ${CONFIG.groom.name}의 결혼식 날입니다.`;
+      return;
     }
 
-    tick();
-    countdownTimer = setInterval(tick, 1000);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    descEl.textContent = `${CONFIG.bride.name}, ${CONFIG.groom.name}의 결혼식이 ${days + 1}일 남았습니다.`;
   }
 
   /* ═══════════════════════════════════════════

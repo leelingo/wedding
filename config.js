@@ -33,7 +33,7 @@ const CONFIG = {
 
   bride: {
     name: "이정은",
-    nameEn: "Jeongeun",
+    nameEn: "Jungeun",
     father: "이재식",
     mother: "남명자",
     fatherDeceased: false,
@@ -49,22 +49,20 @@ const CONFIG = {
     address: "서울시 강남구 영동대로 325 S TOWER",
     tel: "02-000-0000",
     mapLinks: {
-      kakao: "https://map.kakao.com/",
-      naver: "https://map.naver.com/",
-      tmap: "https://tmap.life/"
+      naver: "https://naver.me/G58gjjWp",
     },
     // 오시는 길 - 대중교통 안내
     transit: {
       subway: [
-        { color: "#6b7c3f", text: "7호선 강남구청역 3-1번 출구" },
+        { color: "#00A23F", text: "2호선 삼성역 3번 출구" },
         { color: "#d4a03c", text: "분당선 강남구청역 3-1번 출구" }
       ],
-      subwayNote: "좌측 방향 570M 도보 후 좌측 건물",
       bus: [
-        { color: "#1e3a6e", text: "간선버스 : 301, 342, 472" },
-        { color: "#4a7c3f", text: "지선버스 : 3011, 4312" }
+        { color: "#1e3a6e", text: "간선버스 : 343, 401" },
+        { color: "#4a7c3f", text: "지선버스 : 4319" }
+        { color: "#F8B62B", text: "마을버스 : 강남01, 강남06"}
       ],
-      shuttleNote: "셔틀버스 수시 운행\n강남구청역(7호선,분당선) 3번 출구 앞"
+      shuttleNote: "셔틀버스 수시 운행\n 2호선 삼성역 3번 출구 30M 전방"
     }
   },
 
@@ -73,7 +71,7 @@ const CONFIG = {
     quote: "저절로 웃음이 났다.\n웃는 남자를 보고 여자도 웃었다.\n마음에 꽃이 피는 것 같았다.\n정말로 봄이었다.",
     quoteSource: "정현주 < 다시, 사랑 > 중에서",
     title: "소중한 분들을 초대합니다",
-    content: "둘이 함께 맞이하는 3번째 봄,\n저희 두 사람 결혼합니다.\n앞으로 맞이할 저희의 봄날을 축복해주세요."
+    content: "서로의 삶에 따뜻한 동반자가 되어 \n사랑과 신뢰로 한 가정을 이루려 합니다.\n축복의 자리에 귀한 걸음 하시어 \n저희의 새로운 시작을 함께해 주시면 감사하겠습니다."
   },
 
   // ── 인터뷰 ──
