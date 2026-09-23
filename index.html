@@ -17,7 +17,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Meie+Script&family=Fira+Sans:wght@100;200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Meie+Script&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
   <script src="config.js"></script>
@@ -95,31 +95,6 @@
         <div class="interview__photos animate-item" data-animate="fade-up">
           <div class="interview__photo"><img id="interviewGroomPhoto" src="" alt="신랑" loading="lazy"></div>
           <div class="interview__photo"><img id="interviewBridePhoto" src="" alt="신부" loading="lazy"></div>
-        </div>
-        <button class="btn btn--pill animate-item" data-animate="fade-up" id="interviewBtn">
-          <span class="btn__icon">&#9993;</span> 신랑 &amp; 신부의 인터뷰 읽어보기
-        </button>
-      </div>
-    </section>
-
-    <!-- Profile Section -->
-    <section class="section profile" id="profile">
-      <div class="section__inner">
-        <p class="section__eyebrow animate-item" data-animate="fade-up">PROFILE</p>
-        <h2 class="section__title animate-item" data-animate="fade-up" id="profileTitle"></h2>
-        <div class="profile__grid animate-item" data-animate="fade-up">
-          <div class="profile__col">
-            <p class="profile__label">신랑 <span id="profileGroomName"></span></p>
-            <p class="profile__meta" id="profileGroomMeta"></p>
-            <p class="profile__tags" id="profileGroomTags"></p>
-            <p class="profile__tagline" id="profileGroomTagline"></p>
-          </div>
-          <div class="profile__col">
-            <p class="profile__label">신부 <span id="profileBrideName"></span></p>
-            <p class="profile__meta" id="profileBrideMeta"></p>
-            <p class="profile__tags" id="profileBrideTags"></p>
-            <p class="profile__tagline" id="profileBrideTagline"></p>
-          </div>
         </div>
       </div>
     </section>
@@ -219,12 +194,25 @@
         <h2 class="section__title animate-item" data-animate="fade-up">마음 전하실 곳</h2>
         <p class="account__desc animate-item" data-animate="fade-up">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>
 
-        <div class="account__tabs animate-item" data-animate="fade-up">
-          <button class="account__tab is-active" id="groomTabBtn" data-side="groom">신랑측</button>
-          <button class="account__tab" id="brideTabBtn" data-side="bride">신부측</button>
+        <div class="accordion animate-item" data-animate="fade-up">
+          <button class="accordion__trigger" id="groomAccordion" aria-expanded="false">
+            <span>신랑측 계좌번호</span>
+            <span class="accordion__arrow">&#8964;</span>
+          </button>
+          <div class="accordion__panel" id="groomAccordionPanel">
+            <div class="accordion__panel-inner" id="groomAccountList"></div>
+          </div>
         </div>
 
-        <div class="account__cards animate-item" data-animate="fade-up" id="accountCards"></div>
+        <div class="accordion animate-item" data-animate="fade-up">
+          <button class="accordion__trigger" id="brideAccordion" aria-expanded="false">
+            <span>신부측 계좌번호</span>
+            <span class="accordion__arrow">&#8964;</span>
+          </button>
+          <div class="accordion__panel" id="brideAccordionPanel">
+            <div class="accordion__panel-inner" id="brideAccountList"></div>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -123,14 +123,14 @@ const CONFIG = {
   // ── 마음 전하실 곳 ──
   accounts: {
     groom: [
-      { name: "서상우", bank: "신한은행", number: "110-000-000000", kakaopay: "" },
-      { name: "서귀원 (아버지)", bank: "국민은행", number: "000-000-000000", kakaopay: "" },
-      { name: "양금례 (어머니)", bank: "우리은행", number: "000-000-000000", kakaopay: "" }
+      { role: "신랑", name: "서상우", bank: "신한은행", number: "110-000-000000" },
+      { role: "아버지", name: "서귀원", bank: "국민은행", number: "000-000-000000" },
+      { role: "어머니", name: "양금례", bank: "우리은행", number: "000-000-000000" }
     ],
     bride: [
-      { name: "이정은", bank: "하나은행", number: "000-000-000000", kakaopay: "" },
-      { name: "이재식 (아버지)", bank: "기업은행", number: "000-000-000000", kakaopay: "" },
-      { name: "남명자 (어머니)", bank: "농협은행", number: "000-000-000000", kakaopay: "" }
+      { role: "신부", name: "이정은", bank: "하나은행", number: "000-000-000000" },
+      { role: "아버지", name: "이재식", bank: "기업은행", number: "000-000-000000" },
+      { role: "어머니", name: "남명자", bank: "농협은행", number: "000-000-000000" }
     ]
   },
 

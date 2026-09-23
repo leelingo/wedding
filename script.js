@@ -212,27 +212,6 @@
         </div>
       </div>
     `).join('');
-
-    $('#interviewBtn').addEventListener('click', () => openSheet('interviewModal'));
-  }
-
-  /* ═══════════════════════════════════════════
-     Profile
-     ═══════════════════════════════════════════ */
-
-  function initProfile() {
-    const p = CONFIG.profile;
-    $('#profileTitle').textContent = p.title;
-
-    $('#profileGroomName').textContent = CONFIG.groom.name;
-    $('#profileGroomMeta').textContent = `${p.groom.birth}  ${p.groom.region}`;
-    $('#profileGroomTags').textContent = p.groom.tags;
-    $('#profileGroomTagline').textContent = p.groom.tagline;
-
-    $('#profileBrideName').textContent = CONFIG.bride.name;
-    $('#profileBrideMeta').textContent = `${p.bride.birth}  ${p.bride.region}`;
-    $('#profileBrideTags').textContent = p.bride.tags;
-    $('#profileBrideTagline').textContent = p.bride.tagline;
   }
 
   /* ═══════════════════════════════════════════
@@ -284,7 +263,11 @@
       if (dow === 6) cls += ' is-sat';
       if (d === weddingDay) cls += ' is-today';
       dayEl.className = cls;
-      dayEl.textContent = d;
+      if (d === weddingDay) {
+        dayEl.innerHTML = `<span class="calendar__day-badge">${d}</span>`;
+      } else {
+        dayEl.textContent = d;
+      }
       daysContainer.appendChild(dayEl);
     }
 
@@ -547,39 +530,42 @@
      Account
      ═══════════════════════════════════════════ */
 
-  function renderAccountCards(side) {
-    const list = CONFIG.accounts[side] || [];
-    $('#accountCards').innerHTML = list.map(acc => `
-      <div class="account-card">
-        <p class="account-card__name">${acc.name}</p>
-        <div class="account-card__bank">
-          <span>${acc.bank} ${acc.number}</span>
-          <button class="account-card__copy" data-account="${acc.bank} ${acc.number}">복사</button>
+  function renderAccounts(accounts, containerId) {
+    const container = $(`#${containerId}`);
+    container.innerHTML = accounts.map(acc => `
+      <div class="account-item">
+        <div class="account-item__info">
+          <div class="account-item__role">${acc.role || ''}</div>
+          <div class="account-item__detail">
+            <span class="account-item__name">${acc.name || ''}</span>
+            ${acc.bank} ${acc.number}
+          </div>
         </div>
+        <button class="account-item__copy" data-account="${acc.bank} ${acc.number} ${acc.name || ''}">복사</button>
       </div>
     `).join('');
   }
 
+  function initAccordion(triggerId, panelId) {
+    const trigger = $(`#${triggerId}`);
+    const panel = $(`#${panelId}`);
+
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', !expanded);
+      panel.style.maxHeight = expanded ? '0' : panel.scrollHeight + 'px';
+    });
+  }
+
   function initAccounts() {
-    renderAccountCards('groom');
+    renderAccounts(CONFIG.accounts.groom, 'groomAccountList');
+    renderAccounts(CONFIG.accounts.bride, 'brideAccountList');
 
-    const groomTab = $('#groomTabBtn');
-    const brideTab = $('#brideTabBtn');
-
-    groomTab.addEventListener('click', () => {
-      groomTab.classList.add('is-active');
-      brideTab.classList.remove('is-active');
-      renderAccountCards('groom');
-    });
-
-    brideTab.addEventListener('click', () => {
-      brideTab.classList.add('is-active');
-      groomTab.classList.remove('is-active');
-      renderAccountCards('bride');
-    });
+    initAccordion('groomAccordion', 'groomAccordionPanel');
+    initAccordion('brideAccordion', 'brideAccordionPanel');
 
     document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.account-card__copy');
+      const btn = e.target.closest('.account-item__copy');
       if (!btn) return;
       copyToClipboard(btn.dataset.account, '계좌번호가 복사되었습니다');
     });
@@ -661,7 +647,6 @@
     initHero();
     initGreeting();
     initInterview();
-    initProfile();
     initCalendar();
     initCountdown();
     initLocation();
