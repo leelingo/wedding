@@ -720,7 +720,6 @@ a { color: inherit; text-decoration: none; }
 .gallery__main {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
   overflow: hidden;
   background-color: #ffffff;
   cursor: pointer;
@@ -728,8 +727,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gallery__main-img {
-  width: 100%; height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
+  display: block;
   background-color: #ffffff;
 }
 
