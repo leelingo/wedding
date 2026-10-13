@@ -337,11 +337,14 @@
     }
 
     if (thumbsWrap) {
-      thumbsWrap.innerHTML = galleryImages.map((src, i) => `
+      thumbsWrap.innerHTML = galleryImages.map((src, i) => {
+        const thumbSrc = src.replace('images/gallery/', 'images/gallery/thumb/');
+        return `
         <div class="gallery__thumb${i === 0 ? ' is-active' : ''}" data-index="${i}">
-          <img src="${src}" alt="갤러리 사진 ${i + 1}" loading="lazy">
+          <img src="${thumbSrc}" onerror="this.onerror=null;this.src='${src}';" alt="갤러리 사진 ${i + 1}" loading="lazy">
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       $$('.gallery__thumb', thumbsWrap).forEach((thumb) => {
         thumb.addEventListener('click', () => setGalleryIndex(Number(thumb.dataset.index)));
