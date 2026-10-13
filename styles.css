@@ -780,7 +780,7 @@ a { color: inherit; text-decoration: none; }
 /* ═══════════════════════════════════════════
    Closing
    ═══════════════════════════════════════════ */
-.closing { background-color: var(--color-bg); }
+.closing { background-color: #ffffff; padding-bottom: 0; }
 
 .closing__photo { position: relative; }
 
