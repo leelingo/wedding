@@ -122,7 +122,7 @@
     };
     setMeta('property', 'og:title', m.title);
     setMeta('property', 'og:description', m.description);
-    setMeta('property', 'og:image', 'https://leelingo.github.io/wedding/images/og/1.JPG');
+    setMeta('property', 'og:image', 'https://leelingo.github.io/wedding/images/og/1.jpg');
     setMeta('name', 'description', m.description);
   }
 
@@ -367,11 +367,17 @@
     const hasMultiple = galleryImages.length > 1;
     if (prevBtn) {
       prevBtn.style.display = hasMultiple ? '' : 'none';
-      prevBtn.addEventListener('click', () => setGalleryIndex(galleryIndex - 1));
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setGalleryIndex(galleryIndex - 1);
+      });
     }
     if (nextBtn) {
       nextBtn.style.display = hasMultiple ? '' : 'none';
-      nextBtn.addEventListener('click', () => setGalleryIndex(galleryIndex + 1));
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setGalleryIndex(galleryIndex + 1);
+      });
     }
   }
 
