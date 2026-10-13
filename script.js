@@ -158,7 +158,6 @@
 
   function initGreeting() {
     $('#greetingTitle').textContent = CONFIG.greeting.title;
-    $('#greetingQuote').textContent = CONFIG.greeting.quote;
     $('#greetingContent').textContent = CONFIG.greeting.content;
 
     const g = CONFIG.groom;
