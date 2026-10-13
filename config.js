@@ -75,7 +75,7 @@ const CONFIG = {
 
   // ── 인터뷰 섹션 (제목 · 부제 · 사진 두 장) ──
   interview: {
-    title: "함께 맞는 일곱번째 겨울",
+    title: "함께 맞는 여덟번째 겨울",
     subtitle: "긴 시간 함께 걸어온 저희 두 사람이\n이제 같은 곳을 바라보려 합니다."
   },
 
@@ -89,8 +89,8 @@ const CONFIG = {
   // ── 마음 전하실 곳 ──
   accounts: {
     groom: [
-      { role: "신랑", name: "서상우", bank: "우리은행", number: "1002133801248" },
-      { role: "아버지", name: "서귀원", bank: "국민은행", number: "413002-81-605776" },
+      { role: "신랑", name: "서상우", bank: "우리은행", number: "1002-133-801248" },
+      { role: "아버지", name: "서귀원", bank: "국민은행", number: "413001-01-106890" },
       { role: "어머니", name: "양금례", bank: "국민은행", number: "068-21-0981-167" }
     ],
     bride: [
