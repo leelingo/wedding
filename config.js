@@ -50,15 +50,18 @@ const CONFIG = {
     // 오시는 길 - 대중교통 안내
     transit: {
       subway: [
-        { color: "#00A23F", text: "2호선 삼성역 3번 출구" },
-        { color: "#d4a03c", text: "분당선 강남구청역 3-1번 출구" }
+        { color: "#00A23F", text: "2호선 삼성역 3번 출구" }
       ],
+      subwayNote: "30M 전방에서 셔틀버스 운행\n(수시운행, 도보 이용시 7분 소요)",
       bus: [
-        { color: "#1e3a6e", text: "간선버스 : 343, 401" },
-        { color: "#4a7c3f", text: "지선버스 : 4319" },
-        { color: "#F8B62B", text: "마을버스 : 강남01, 강남06"}
+        { color: "#1e3a6e", text: "간선 : 343, 401" },
+        { color: "#4a7c3f", text: "지선 : 4319" },
+        { color: "#F8B62B", text: "마을 : 강남01, 강남06" },
+        { color: "#8a6d3b", text: "일반 : 11-3" },
+        { color: "#c0392b", text: "직행 : 500-2, 9407, 9507, 9607" },
+        { color: "#555555", text: "심야 : 500-2N" }
       ],
-      shuttleNote: "셔틀버스 수시 운행\n 2호선 삼성역 3번 출구 30M 전방"
+      shuttleNote: "휘문고교 사거리 버스 정류장 (ID 23-245)"
     }
   },
 
@@ -86,14 +89,13 @@ const CONFIG = {
   // ── 마음 전하실 곳 ──
   accounts: {
     groom: [
-      { role: "신랑", name: "서상우", bank: "신한은행", number: "110-000-000000" },
-      { role: "아버지", name: "서귀원", bank: "국민은행", number: "000-000-000000" },
-      { role: "어머니", name: "양금례", bank: "우리은행", number: "000-000-000000" }
+      { role: "신랑", name: "서상우", bank: "우리은행", number: "1002133801248" },
+      { role: "아버지", name: "서귀원", bank: "국민은행", number: "413002-81-605776" },
+      { role: "어머니", name: "양금례", bank: "국민은행", number: "068-21-0981-167" }
     ],
     bride: [
-      { role: "신부", name: "이정은", bank: "하나은행", number: "000-000-000000" },
-      { role: "아버지", name: "이재식", bank: "기업은행", number: "000-000-000000" },
-      { role: "어머니", name: "남규리(명자)", bank: "농협은행", number: "000-000-000000" }
+      { role: "신부", name: "이정은", bank: "우리은행", number: "1002-853-207712" },
+      { role: "어머니", name: "남규리(명자)", bank: "하나은행", number: "283-810-663-07807" }
     ]
   },
 

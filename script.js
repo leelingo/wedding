@@ -123,7 +123,24 @@
 
   function initHero() {
     $('#heroPhoto').src = 'images/hero/1.jpg';
-    $('#heroDate').textContent = `${CONFIG.hero.dateDay} ${CONFIG.hero.dateMonth}`;
+    initSnow();
+  }
+
+  function initSnow() {
+    const container = $('#heroSnow');
+    if (!container) return;
+    const count = 40;
+    let html = '';
+    for (let i = 0; i < count; i++) {
+      const size = (Math.random() * 3 + 2).toFixed(1); // 2px ~ 5px
+      const left = (Math.random() * 100).toFixed(2);
+      const duration = (Math.random() * 6 + 7).toFixed(2); // 7s ~ 13s
+      const delay = (Math.random() * -13).toFixed(2);
+      const drift = (Math.random() * 60 - 30).toFixed(0);
+      const opacity = (Math.random() * 0.5 + 0.4).toFixed(2);
+      html += `<span class="snowflake" style="width:${size}px;height:${size}px;left:${left}%;opacity:${opacity};--drift:${drift}px;animation-duration:${duration}s;animation-delay:${delay}s;"></span>`;
+    }
+    container.innerHTML = html;
   }
 
   /* ═══════════════════════════════════════════
@@ -133,7 +150,6 @@
   function initGreeting() {
     $('#greetingTitle').textContent = CONFIG.greeting.title;
     $('#greetingQuote').textContent = CONFIG.greeting.quote;
-    $('#greetingQuoteSource').textContent = CONFIG.greeting.quoteSource;
     $('#greetingContent').textContent = CONFIG.greeting.content;
 
     const g = CONFIG.groom;
@@ -430,8 +446,6 @@
      ═══════════════════════════════════════════ */
 
   function initClosing(storyImages) {
-    $('#closingLabel').textContent = CONFIG.closing.label;
-    $('#closingMessage').textContent = CONFIG.closing.message;
     const photo = $('#closingPhoto');
     if (photo) photo.src = (storyImages && storyImages[0]) || 'images/hero/1.jpg';
   }

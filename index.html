@@ -44,10 +44,7 @@
     <!-- Hero Section -->
     <section class="section hero" id="hero">
       <img class="hero__photo" id="heroPhoto" src="" alt="웨딩 사진" loading="eager">
-      <div class="hero__overlay">
-        <p class="hero__script">Getting<br>Married</p>
-        <p class="hero__date" id="heroDate"></p>
-      </div>
+      <div class="hero__snow" id="heroSnow" aria-hidden="true"></div>
     </section>
 
     <!-- Greeting Section -->
@@ -56,7 +53,6 @@
         <p class="section__eyebrow animate-item" data-animate="fade-up">INVITATION</p>
         <h2 class="section__title animate-item" data-animate="fade-up" id="greetingTitle"></h2>
         <p class="greeting__quote animate-item" data-animate="fade-up" id="greetingQuote"></p>
-        <p class="greeting__quote-source animate-item" data-animate="fade-up" id="greetingQuoteSource"></p>
         <p class="greeting__text animate-item" data-animate="fade-up" id="greetingContent"></p>
         <div class="section__divider animate-item" data-animate="fade-in"></div>
         <div class="greeting__parents animate-item" data-animate="fade-up" id="greetingParents"></div>
@@ -112,8 +108,8 @@
           <div class="location__transit-group animate-item" data-animate="fade-up" id="locationBusGroup">
             <div class="location__transit-divider"></div>
             <h3 class="location__transit-title">버스</h3>
-            <ul class="location__transit-list" id="locationBusList"></ul>
             <p class="location__transit-note" id="locationShuttleNote"></p>
+            <ul class="location__transit-list" id="locationBusList"></ul>
           </div>
         </div>
       </div>
@@ -137,10 +133,8 @@
 
     <!-- Closing Section -->
     <section class="section closing" id="closing">
-      <p class="closing__label animate-item" data-animate="fade-up" id="closingLabel"></p>
       <div class="closing__photo animate-item" data-animate="fade-up">
         <img id="closingPhoto" src="" alt="웨딩 사진" loading="lazy">
-        <p class="closing__message" id="closingMessage"></p>
       </div>
     </section>
 
