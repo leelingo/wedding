@@ -419,9 +419,7 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero__snow { display: none; }
-}
+/* 청첩장 특성상 '동작 줄이기' 설정과 무관하게 모두에게 눈 효과를 표시 */
 
 .hero__overlay {
   position: absolute;

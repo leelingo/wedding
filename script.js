@@ -33,18 +33,29 @@
      ═══════════════════════════════════════════ */
 
   function loadImagesFromFolder(folder, maxAttempts = 50) {
+    const extensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG'];
     return new Promise(resolve => {
       const images = [];
       let current = 1;
       let consecutiveFails = 0;
 
       function tryNext() {
-        if (current > maxAttempts || consecutiveFails >= 3) {
+        if (current > maxAttempts || consecutiveFails >= 5) {
           resolve(images);
           return;
         }
+        tryExtension(0);
+      }
+
+      function tryExtension(extIndex) {
+        if (extIndex >= extensions.length) {
+          consecutiveFails++;
+          current++;
+          tryNext();
+          return;
+        }
         const img = new Image();
-        const path = `images/${folder}/${current}.jpg`;
+        const path = `images/${folder}/${current}.${extensions[extIndex]}`;
         img.onload = function () {
           images.push(path);
           consecutiveFails = 0;
@@ -52,9 +63,7 @@
           tryNext();
         };
         img.onerror = function () {
-          consecutiveFails++;
-          current++;
-          tryNext();
+          tryExtension(extIndex + 1);
         };
         img.src = path;
       }
@@ -132,7 +141,7 @@
     const count = 40;
     let html = '';
     for (let i = 0; i < count; i++) {
-      const size = (Math.random() * 3 + 2).toFixed(1); // 2px ~ 5px
+      const size = (Math.random() * 4 + 3).toFixed(1); // 3px ~ 7px
       const left = (Math.random() * 100).toFixed(2);
       const duration = (Math.random() * 6 + 7).toFixed(2); // 7s ~ 13s
       const delay = (Math.random() * -13).toFixed(2);
