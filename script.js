@@ -34,42 +34,29 @@
 
   function loadImagesFromFolder(folder, maxAttempts = 50) {
     const extensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG'];
-    return new Promise(resolve => {
-      const images = [];
-      let current = 1;
-      let consecutiveFails = 0;
 
-      function tryNext() {
-        if (current > maxAttempts || consecutiveFails >= 5) {
-          resolve(images);
-          return;
+    function tryNumber(num) {
+      return new Promise(resolve => {
+        function tryExtension(extIndex) {
+          if (extIndex >= extensions.length) {
+            resolve(null);
+            return;
+          }
+          const img = new Image();
+          const path = `images/${folder}/${num}.${extensions[extIndex]}`;
+          img.onload = function () { resolve(path); };
+          img.onerror = function () { tryExtension(extIndex + 1); };
+          img.src = path;
         }
         tryExtension(0);
-      }
+      });
+    }
 
-      function tryExtension(extIndex) {
-        if (extIndex >= extensions.length) {
-          consecutiveFails++;
-          current++;
-          tryNext();
-          return;
-        }
-        const img = new Image();
-        const path = `images/${folder}/${current}.${extensions[extIndex]}`;
-        img.onload = function () {
-          images.push(path);
-          consecutiveFails = 0;
-          current++;
-          tryNext();
-        };
-        img.onerror = function () {
-          tryExtension(extIndex + 1);
-        };
-        img.src = path;
-      }
+    // 번호별로 동시에(병렬로) 요청해서 순서대로 기다리지 않도록 처리
+    const probes = [];
+    for (let i = 1; i <= maxAttempts; i++) probes.push(tryNumber(i));
 
-      tryNext();
-    });
+    return Promise.all(probes).then(results => results.filter(Boolean));
   }
 
   /* ═══════════════════════════════════════════
